@@ -86,10 +86,26 @@ const actions = {
 };
 
 const mutations = {
+  /**
+   * @param  {object} state
+   * @param  {object} todos
+   */
   setTodos: (state, todos) => (state.todos = todos),
+  /**
+   * @param  {object} state
+   * @param  {object} todo
+   */
   newTodo: (state, todo) => state.todos.unshift(todo),
+  /**
+   * @param  {object} state
+   * @param  {Number} id
+   */
   removeTodo: (state, id) =>
     (state.todos = state.todos.filter(todo => todo.id !== id)),
+  /**
+   * @param  {object} state
+   * @param  {object} updTodo
+   */
   updateTodo: (state, updTodo) => {
     const index = state.todos.findIndex(todo => todo.id === updTodo.id);
     if (index !== -1) {

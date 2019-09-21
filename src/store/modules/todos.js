@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const state = {
-  todos: []
+  todos: [],
+  loader:false
 };
 
 const getters = {
@@ -9,27 +10,37 @@ const getters = {
 };
 
 const actions = {
+
   async fetchTodos({ commit }) {
+      
     const response = await axios.get(
       'https://jsonplaceholder.typicode.com/todos'
     );
-
+    document.getElementById('overlay').style.display="none";
     commit('setTodos', response.data);
+    
   },
   async addTodo({ commit }, title) {
+    document.getElementById('overlay').style.display="block";
     const response = await axios.post(
       'https://jsonplaceholder.typicode.com/todos',
       { title, completed: false }
     );
 
     commit('newTodo', response.data);
+    document.getElementById('overlay').style.display="none";
   },
   async deleteTodo({ commit }, id) {
+    document.getElementById('overlay').style.display="block";
+
     await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
 
     commit('removeTodo', id);
+    document.getElementById('overlay').style.display="none";
+
   },
   async filterTodos({ commit }, e) {
+    document.getElementById('overlay').style.display="block";
     // Get selected number
     const limit = parseInt(
       e.target.options[e.target.options.selectedIndex].innerText
@@ -40,6 +51,8 @@ const actions = {
     );
 
     commit('setTodos', response.data);
+    document.getElementById('overlay').style.display="none";
+
   },
   async updateTodo({ commit }, updTodo) {
     const response = await axios.put(

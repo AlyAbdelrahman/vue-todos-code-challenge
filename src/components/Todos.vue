@@ -34,6 +34,7 @@ export default {
   methods: {
     ...mapActions(["fetchTodos", "deleteTodo", "updateTodo"]),
     onDblClick(todo) {
+      
       const updTodo = {
         id: todo.id,
         title: todo.title,

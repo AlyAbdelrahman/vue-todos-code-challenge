@@ -10,7 +10,9 @@ const getters = {
 };
 
 const actions = {
-
+/**
+   * @param {object} commit
+   */
   async fetchTodos({ commit }) {
       
     const response = await axios.get(
@@ -20,6 +22,10 @@ const actions = {
     commit('setTodos', response.data);
     
   },
+  /**
+   * @param {object} commit
+   * @param {string} title
+   */
   async addTodo({ commit }, title) {
     document.getElementById('overlay').style.display="block";
     const response = await axios.post(
@@ -30,6 +36,11 @@ const actions = {
     commit('newTodo', response.data);
     document.getElementById('overlay').style.display="none";
   },
+
+    /**
+   * @param {object} commit
+   * @param {Number} id
+   */
   async deleteTodo({ commit }, id) {
     document.getElementById('overlay').style.display="block";
 
@@ -39,6 +50,10 @@ const actions = {
     document.getElementById('overlay').style.display="none";
 
   },
+    /**
+   * @param {object} commit
+   * @param {Event} e
+   */
   async filterTodos({ commit }, e) {
     document.getElementById('overlay').style.display="block";
     // Get selected number
@@ -54,6 +69,10 @@ const actions = {
     document.getElementById('overlay').style.display="none";
 
   },
+    /**
+   * @param {object} commit
+   * @param {object} updTodo
+   */
   async updateTodo({ commit }, updTodo) {
     const response = await axios.put(
       `https://jsonplaceholder.typicode.com/todos/${updTodo.id}`,

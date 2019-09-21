@@ -16,6 +16,10 @@
 import { mapActions } from "vuex";
 export default {
   name: "FilterTodos",
+    /**
+       * get new todos list  
+       * @param {Number} todosNumber - New Todos list Number needed
+       */
   methods: mapActions(["filterTodos"])
 };
 </script>

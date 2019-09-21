@@ -29,10 +29,24 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+/**
+   * @module todos-page-container
+   * @desc todos container, used to contain the add todo / filter / todos components
+   * @vue-computed {Array} allTodos - A list of todos
+   * @vue-event {} fetchTodos - get all data from Ajax
+   * @vue-event {Number} deleteTodo - delete Todo by id
+   * @vue-event {object} update - update Todo 
+*/
 export default {
   name: "Todos",
   methods: {
+    
     ...mapActions(["fetchTodos", "deleteTodo", "updateTodo"]),
+
+     /**
+       * Update state of todo 
+       * @param {Object} todo - New Todo state
+       */
     onDblClick(todo) {
       
       const updTodo = {
@@ -44,6 +58,9 @@ export default {
     }
   },
   computed: mapGetters(["allTodos"]),
+   /**
+     * Todos.vue `created` hook.
+     */
   created() {
     this.fetchTodos();
   }

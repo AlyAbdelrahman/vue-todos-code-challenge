@@ -17,6 +17,12 @@
 
 <script>
 import{mapActions} from "vuex";
+/**
+   * @module Addto-do
+   * @desc Addtodo input, used to contain the add todo input field 
+   * @vue-data {string} title - Current input field text 
+   * @vue-event {string} title - add todo to store
+*/
 export default {
     
 name:"AddTodo",
@@ -27,9 +33,14 @@ data(){
 },
  methods: {
         ...mapActions(['addTodo']),
+          /**
+       * send new todo to Ajax to be added in the store 
+       * @param {Object} event - New Todo string
+       */
         onSubmit(e){
             e.preventDefault();
-            this.addTodo(this.title)
+            this.addTodo(this.title);
+             this.title=''
         }
     },
 }

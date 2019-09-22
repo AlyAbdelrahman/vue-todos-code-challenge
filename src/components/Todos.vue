@@ -4,10 +4,10 @@
     <div class="legend">
       <span>Double click to mark as complete</span>
       <span>
-        <span class="incomplete-box"/>= Incomplete
+        <span class="incomplete-box"/> = Incomplete
       </span>
       <span>
-        <span class="complete-box"/>= Complete
+        <span class="complete-box"/> = Complete
       </span>
     </div>
     <div class="todos">

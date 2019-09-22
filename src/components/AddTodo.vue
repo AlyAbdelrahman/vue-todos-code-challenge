@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Add to Do </h3>
     <div class="add">
       <form @submit="onSubmit">
         <input 
